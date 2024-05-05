@@ -12,6 +12,4 @@ RUN mkdir -p /etc/nginx/sites-enabled
 
 RUN ln -s /etc/nginx/sites-available/fast_api.conf /etc/nginx/sites-enabled/fast_api.conf 
 RUN ln -s /etc/nginx/sites-available/next.conf /etc/nginx/sites-enabled/next.conf
-RUN ln -s /etc/nginx/sites-available/discord.conf /etc/nginx/sites-enabled/discord.conf
-
 EXPOSE 443

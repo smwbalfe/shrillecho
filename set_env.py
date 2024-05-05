@@ -1,13 +1,17 @@
 import sys
+import os
 
 def update_environment_variables(env_file_paths, target_env):
     for env_file_path in env_file_paths:
+        # Resolve the relative path to absolute path
+        abs_env_file_path = os.path.abspath(env_file_path)
+        
         # Read the content of the .env file
-        with open(env_file_path, "r") as file:
+        with open(abs_env_file_path, "r") as file:
             lines = file.readlines()
 
         # Update the ENVIRONMENT and NEXT_PUBLIC_ENV lines
-        with open(env_file_path, "w") as file:
+        with open(abs_env_file_path, "w") as file:
             for line in lines:
                 if line.startswith("ENVIRONMENT="):
                     file.write(f'ENVIRONMENT="{target_env}"\n')
@@ -30,10 +34,11 @@ if __name__ == "__main__":
         print("Error: <env> must be 'dev' or 'prod'")
         sys.exit(1)
 
+    # Relative paths to the .env files
     env_paths = [
-        r"K:\dev\shrillecho\shrillecho-app\web\.env.local",
-        r"K:\dev\shrillecho\shrillecho-app\server\.env",
-        r"K:\dev\shrillecho\shrillecho-discord\.env"
+        r".\shrillecho-nextjs\.env.local",
+        r".\shrillecho-fastapi\.env",
     ]
-
+    
+    # Update the environment variables
     update_environment_variables(env_paths, target_env)

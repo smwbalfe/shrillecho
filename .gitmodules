@@ -1,3 +1,6 @@
 [submodule "shrillecho-fastapi"]
 	path = shrillecho-fastapi
 	url = https://github.com/smwbalfe/shrillecho-fastapi
+[submodule "shrillecho-nextjs"]
+	path = shrillecho-nextjs
+	url = git@github.com:smwbalfe/shrillecho-nextjs.git

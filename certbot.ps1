@@ -1,0 +1,1 @@
+docker run -it --rm -v K:\dev\shrillecho\shrillecho-app\nginx\etc3\letsencrypt:/etc/letsencrypt -v K:\dev\shrillecho\shrillecho-app\nginx\var3\lib2\letsencrypt:\var\lib\letsencrypt -p 80:80 -p 443:443 certbot/certbot certonly --standalone -d discord.shrillecho.app

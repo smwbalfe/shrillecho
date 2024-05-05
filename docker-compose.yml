@@ -1,0 +1,51 @@
+version: '3'
+
+services:
+  fastapi_server:
+    build:
+      context: ../../shrillecho-app
+      dockerfile: ../devops/docker/Dockerfile.server
+    container_name: fastapi_server
+    volumes:
+      - ../../shrillecho-app/server:/app
+    ports:
+      - "8001:8001"
+    expose:
+      - 8001
+  nginx:
+    build:
+      context: ../../shrillecho-app
+      dockerfile: ../devops/docker/Dockerfile.nginx
+    container_name: nginx
+    ports:
+      - "80:80"
+      - "443:443"
+    volumes:
+      - ../../shrillecho-app/nginx/nginx.conf:/etc/nginx/nginx.conf
+  # discord_quart:
+  #   build:
+  #     context: ../../shrillecho-discord
+  #     dockerfile: ../devops/docker/Dockerfile.discord
+  #   container_name: discord_quart
+  #   volumes:
+  #     - ../../shrillecho-discord:/app
+  #   ports:
+  #     - "5000:5000"
+  #   expose:
+  #     - 5000
+  next_web:
+    build:
+      context: ../../shrillecho-app
+      dockerfile: ../devops/docker/Dockerfile.web
+    volumes:
+      - ../../shrillecho-app/web:/app
+      - /app/node_modules
+      - /app/.next
+    container_name: next_web
+    expose:
+      - 3000
+  redis:
+    image: "redis:latest"
+    container_name: redis
+    ports:
+      - "6379:6379"

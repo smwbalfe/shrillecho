@@ -1,0 +1,17 @@
+FROM nginx:alpine
+
+COPY ./nginx/nginx.conf /etc/nginx/nginx.conf
+COPY ./nginx/sites-available/ /etc/nginx/sites-available/
+
+COPY ./nginx/letsencrypt/live/api.shrillecho.app/fullchain1.pem /etc/letsencrypt/live/api.shrillecho.app/fullchain.pem
+COPY ./nginx/letsencrypt/live/api.shrillecho.app/privkey1.pem /etc/letsencrypt/live/api.shrillecho.app/privkey.pem
+COPY ./nginx/letsencrypt/live/shrillecho.app/fullchain.pem /etc/letsencrypt/live/shrillecho.app/fullchain.pem
+COPY ./nginx/letsencrypt/live/shrillecho.app/privkey.pem /etc/letsencrypt/live/shrillecho.app/privkey.pem
+
+RUN mkdir -p /etc/nginx/sites-enabled
+
+RUN ln -s /etc/nginx/sites-available/fast_api.conf /etc/nginx/sites-enabled/fast_api.conf 
+RUN ln -s /etc/nginx/sites-available/next.conf /etc/nginx/sites-enabled/next.conf
+RUN ln -s /etc/nginx/sites-available/discord.conf /etc/nginx/sites-enabled/discord.conf
+
+EXPOSE 443

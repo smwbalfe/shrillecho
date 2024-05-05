@@ -1,0 +1,3 @@
+[submodule "shrillecho-fastapi"]
+	path = shrillecho-fastapi
+	url = https://github.com/smwbalfe/shrillecho-fastapi

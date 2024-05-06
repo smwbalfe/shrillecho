@@ -31,6 +31,8 @@ services:
       - /app/node_modules
       - /app/.next
     container_name: next_web
+    ports:
+      - "3000:3000"
     expose:
       - 3000
   redis:

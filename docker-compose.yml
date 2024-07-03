@@ -24,6 +24,9 @@ services:
       - 443
     volumes:
       - ./nginx/nginx.conf:/etc/nginx/nginx.conf
+    depends_on:
+      - next_web
+      - fastapi_server
   next_web:
     build:
       context: ../shrillecho-nextjs

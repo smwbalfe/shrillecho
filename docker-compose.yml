@@ -3,11 +3,11 @@ version: '3'
 services:
   fastapi_server:
     build:
-      context: ./shrillecho-fastapi
+      context: ../shrillecho-fastapi
       dockerfile: Dockerfile.server
     container_name: fastapi_server
     volumes:
-      - ./shrillecho-fastapi:/app
+      - ../shrillecho-fastapi:/app
     ports:
       - "8001:8001"
     expose:
@@ -20,14 +20,16 @@ services:
     ports:
       - "80:80"
       - "443:443"
+    expose:
+      - 443
     volumes:
       - ./nginx/nginx.conf:/etc/nginx/nginx.conf
   next_web:
     build:
-      context: ./shrillecho-nextjs
+      context: ../shrillecho-nextjs
       dockerfile: Dockerfile.web
     volumes:
-      - ./shrillecho-nextjs:/app
+      - ../shrillecho-nextjs:/app
       - /app/node_modules
       - /app/.next
     container_name: next_web

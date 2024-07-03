@@ -5,8 +5,8 @@ COPY ./nginx/sites-available/ /etc/nginx/sites-available/
 
 COPY ./nginx/letsencrypt/live/api.shrillecho.app/fullchain1.pem /etc/letsencrypt/live/api.shrillecho.app/fullchain.pem
 COPY ./nginx/letsencrypt/live/api.shrillecho.app/privkey1.pem /etc/letsencrypt/live/api.shrillecho.app/privkey.pem
-COPY ./nginx/letsencrypt/live/shrillecho.app/fullchain.pem /etc/letsencrypt/live/shrillecho.app/fullchain.pem
-COPY ./nginx/letsencrypt/live/shrillecho.app/privkey.pem /etc/letsencrypt/live/shrillecho.app/privkey.pem
+COPY ./nginx/letsencrypt/live/shrillecho.app/fullchain1.pem /etc/letsencrypt/live/shrillecho.app/fullchain.pem
+COPY ./nginx/letsencrypt/live/shrillecho.app/privkey1.pem /etc/letsencrypt/live/shrillecho.app/privkey.pem
 
 RUN mkdir -p /etc/nginx/sites-enabled
 

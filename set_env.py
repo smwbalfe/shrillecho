@@ -6,7 +6,7 @@ def update_environment_variables(env_file_paths, target_env):
         # Resolve the relative path to absolute path
         abs_env_file_path = os.path.abspath(env_file_path)
         
-        ## Read the content of the .env file
+        ### Read the content of the .env file
         with open(abs_env_file_path, "r") as file:
             lines = file.readlines()
 
